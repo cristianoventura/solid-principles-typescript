@@ -1,38 +1,37 @@
-// A software artifact should be open for extension but closed for modification
+/**
+ * Open-Closed Principle
+ * @description A software artifact should be open for extension but closed for modification
+ * @example A Purchase Class that contains a createdPurchase method and should handle two different logics depending on the selected credit card
+ **/
 
-
-// Items for a purchase can be extensible now
-interface IItem {
-	price: number,
-	quantity: number
-}
-
-// A purchase object can be extensible and use other interfaces
-interface IPurchase {
-	items: [IItem]
-	total: number
-}
-
+ // ============> Without the Open-Closed Principle
 class Purchase {
-	getPurchase(id: number): IPurchase {
-		const items: [IItem] = [
-			{ price: 10, quantity: 1 },
-			{ price: 15, quantity: 2 }
-		];
-		const total: number = this.getTotal(items);
-
-		return {
-			items,
-			total
-		};
+	createPurchaseWithMasterCard(): void {
+		// Handle purchase with Master Card
 	}
 
-	getTotal(items: [IItem]): number {
-		return items.reduce((acc, item) => acc + (item.price * item.quantity), 0);
+	createPurchaseWithVisa(): void {
+		// Handle purchase with Visa
 	}
+}
 
-	createPurchase(data: IPurchase) {
-		console.log(data.items);
-		console.log(data.total);
+
+
+// ============> Implementing the Open-Closed Principle
+abstract class Purchase {
+	abstract createPurchase(): void;
+}
+
+// Now the Purchase class can be extensible to multiple payment methods
+// And those payment methods are extensible in their own class
+class VisaPayment extends Purchase {
+	createPurchase(): void {
+		// do something
+	}
+}
+
+class MasterCardPayment extends Purchase {
+	createPurchase(): void {
+		// do something
 	}
 }
