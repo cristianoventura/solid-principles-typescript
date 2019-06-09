@@ -4,6 +4,7 @@
  * @example An interface that should implement methods that cannot be used
  **/
 
+ // ============> Without the Interface Segregation Principle
 interface Animal {
 	fly(): void;
 	walk(): void;
@@ -32,7 +33,7 @@ class Dog implements Animal {
 
 
 
-// ============> Interface Segregation Principle
+// ============> Implementing the Interface Segregation Principle
 // Separate methods in different interfaces that they belong
 interface IDog {
 	bark(): void;
