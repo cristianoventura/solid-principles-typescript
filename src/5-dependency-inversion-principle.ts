@@ -1,7 +1,7 @@
 /**
  * Dependency Inversion Principle
- * @description Objects shouldn't depend on other objects. They should depend on abstractions for implementing them
- * @example Employee class that contains the adjustSalary method
+ * @description Objects shouldn't depend on other objects. They should depend on abstractions to implement them
+ * @example Employee class that contains the adjustSalary method will have the same implementation for every child class
  **/
 
 // ============> Without the Dependency Inversion Principle
